@@ -5,27 +5,26 @@
 
 :root {
     --color-fondo: #000000;
-    --color-letras: #F6F6F6;
-    --color-terciaria: #22D4FD;
+    --color-letras: white;
+    --color-footer_header: #2EF527;
+    --color-letras_footer_header: #000;
     --color-hover: #272727;
 }
 
 header {
     padding: 2% 0% 0% 15%;
+    background-color: var(--color-footer_header);
 }
-
-.imagenUno {
-    width: 30%;
+.imagenes {
+    width: clamp(150px, 20%, 300px); 
+    aspect-ratio: 1 / 1; 
+    object-fit: cover;
 }
-
-.ImagenDos {
-    width: 30%;
-}
-
 footer {
-    padding: 2% 0% 0% 15%;
+    padding: 15px;
     text-align: center;
-    color: var(--color-letras);
+    color: var(--color-letras_footer_header);
+    background-color: var(--color-footer_header);
 }
 
 body {
@@ -42,10 +41,11 @@ body {
     text-align: justify;
     font-size: 1.5rem;
     color: var(--color-letras);
+    padding: 0% 0% 80% 0%;
 }
 
 .Presentador {
-    width: 40%;
+    width: clamp(250px, 35%, 600px); 
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -59,15 +59,24 @@ body {
     gap: 30px;
 }
 
+
 @media (max-width: 768px) {
     .Presentador_total {
         flex-direction: column;
+        align-items: center;
     }
 
-    .imagenUno, 
-    .ImagenDos, 
     .Presentador {
-        width: 90%;
+        width: 100%;
+    }
+.texto{
+    padding: 5%;
+ 
+}
+ .imagenes {
+        width: 80vw;         
+        aspect-ratio: 1 / 1; 
+        object-fit: cover;   
+        padding: 10% 0% 0% 10%;
     }
 }
-
