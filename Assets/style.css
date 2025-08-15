@@ -1,30 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap');
 * {
     padding: 0;
     margin: 0;
 }
 
 :root {
-    --color-fondo: #000000;
+    --color-fondo: #030303;
     --color-letras: white;
-    --color-footer_header: #2EF527;
-    --color-letras_footer_header: #000;
+    --color-footer_header: #027c00;
+    --color-letras_footer_header: #ffffff;
     --color-hover: #272727;
+    --fuente-krona: 'Krona One', sans-serif;
+    --fuente-montserrat: 'Montserrat', sans-serif;
 }
 
 header {
     padding: 2% 0% 0% 15%;
     background-color: var(--color-footer_header);
+    position: relative; 
+    height: 60px; 
 }
 .imagenes {
-    width: clamp(150px, 20%, 300px); 
-    aspect-ratio: 1 / 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 50px; 
+}
+
+.imagenes img {
+    width: 210px;
+    height: 210px;
     object-fit: cover;
+    border-radius: 5px;
 }
 footer {
     padding: 15px;
     text-align: center;
     color: var(--color-letras_footer_header);
     background-color: var(--color-footer_header);
+    font-family: var(--fuente-krona);
 }
 
 body {
@@ -35,13 +50,15 @@ body {
 .tituloinicial {
     text-align: center;
     color: var(--color-letras);
+    font-family: var(--fuente-krona);
 }
 
 .texto {
-    text-align: justify;
+    text-align: left;
     font-size: 1.5rem;
     color: var(--color-letras);
     padding: 0% 0% 80% 0%;
+    font-family: var(--fuente-montserrat);
 }
 
 .Presentador {
@@ -54,12 +71,31 @@ body {
 .Presentador_total {
     padding: 5% 15%;
     display: flex;
-    align-items: center;
+    align-items: flex-start; 
     justify-content: center;
     gap: 30px;
 }
 
-
+.Links_Paginas{
+font-family: var(--fuente-krona);
+text-decoration: none;
+text-align: left;
+font-size: 1.2rem;
+color: var(--color-letras);
+}
+nav{
+    padding: 0% 0% 2% 0%;
+}
+.Links_Paginas:hover{
+   color: aqua;
+}
+.ImagenHeader{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 80%; 
+    width: auto;
+}
 @media (max-width: 768px) {
     .Presentador_total {
         flex-direction: column;
