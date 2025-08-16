@@ -94,6 +94,9 @@ nav{
     height: 80%; 
     width: auto;
 }
+.strong_footer:hover{
+color:aquamarine;
+}
 @media (max-width: 768px) {
     .Presentador_total {
         flex-direction: column;
