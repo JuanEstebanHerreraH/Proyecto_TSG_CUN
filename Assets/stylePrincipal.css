@@ -7,9 +7,8 @@
 :root {
     --color-fondo: #030303;
     --color-letras: white;
-    --color-footer_header: #027c00;
+    --color-footer_header: #1A2A80;
     --color-letras_footer_header: #ffffff;
-    --color-hover: #272727;
     --fuente-krona: 'Krona One', sans-serif;
     --fuente-montserrat: 'Montserrat', sans-serif;
 }

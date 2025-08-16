@@ -6,6 +6,7 @@
 }
 header{
     height: 67px; 
+    background-color: #1A2A80;
 }
 :root {
     --color-fondo: #030303;
@@ -94,6 +95,7 @@ footer {
     color: white;
     font-size: 0.9rem;
     margin-top: auto; 
+    background-color: #1A2A80;
 }
 
 
