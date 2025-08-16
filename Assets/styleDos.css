@@ -4,6 +4,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+header{
+    height: 67px; 
+}
 :root {
     --color-fondo: #030303;
     --color-letras: white;
