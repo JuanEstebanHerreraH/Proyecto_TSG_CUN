@@ -46,10 +46,10 @@ body {
 
 .tituloinicial {
     text-align: center;
-    color: var(--color-letras);
+    color: wheat;
+    font-size: x-large;
     font-family: var(--fuente-krona);
 }
-
 .texto {
     text-align: left;
     font-size: 1.5rem;
@@ -79,9 +79,11 @@ text-decoration: none;
 text-align: left;
 font-size: 1.2rem;
 color: var(--color-letras);
+padding: 1%;
 }
 nav{
     padding: 0% 0% 2% 0%;
+    
 }
 .Links_Paginas:hover{
    color: aqua;
