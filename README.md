@@ -10,7 +10,7 @@ Bienvenido al repositorio del **Proyecto TSG-CUN**, donde desarrollamos un **Rob
 - `funciones-robot/` → Funcionalidades y lógica implementada en el robot.  
 - `proyecto-tsg/` → Archivos generales del Proyecto TSG.  
 - `proyecto-robot/` → Documentación y código específico del robot.  
-- `PaginaCuatro` → En construccion....
+- `PaginaCuatro/` → En construccion....
 
 ## 🛠️ Tecnologías Utilizadas
 - **Hardware:** Arduino, componentes electrónicos.  
@@ -21,4 +21,4 @@ Bienvenido al repositorio del **Proyecto TSG-CUN**, donde desarrollamos un **Rob
 - Juan Esteban Herrera Herrera  
 
 ---
-📚 Proyecto académico desarrollado en la **Corporación Unificada Nacional de Educación Superior (CUN)**.  
+📚`Proyecto académico desarrollado para Teoria General de Sistemas` **Corporación Unificada Nacional de Educación Superior (CUN)**.  
