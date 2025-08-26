@@ -10,7 +10,7 @@ Bienvenido al repositorio del **Proyecto TSG-CUN**, donde desarrollamos un **Rob
 - `funciones-robot/` → Funcionalidades y lógica implementada en el robot.  
 - `proyecto-tsg/` → Archivos generales del Proyecto TSG.  
 - `proyecto-robot/` → Documentación y código específico del robot.  
-- `en-construccion/` → Sección en desarrollo con futuras mejoras y pruebas.  
+- `PaginaCuatro` → En construccion....
 
 ## 🛠️ Tecnologías Utilizadas
 - **Hardware:** Arduino, componentes electrónicos.  
