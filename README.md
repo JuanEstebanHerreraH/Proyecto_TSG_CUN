@@ -7,10 +7,10 @@ Bienvenido al repositorio del **Proyecto TSG-CUN**, donde desarrollamos un **Rob
 - 🌐 **Página Web**: Desarrollo en **HTML | CSS | JavaScript** para documentar, explicar y presentar el proyecto.  
 
 ## 📂 Estructura del Repositorio
-- `funciones-robot/` → Funcionalidades y lógica implementada en el robot.  
-- `proyecto-tsg/` → Archivos generales del Proyecto TSG.  
-- `proyecto-robot/` → Documentación y código específico del robot.  
-- `PaginaCuatro/` → En construccion....
+- `Funciones-robot/` → Funcionalidades y lógica implementada en el robot.  
+- `Proyecto-tsg/` → Archivos generales del Proyecto TSG.  
+- `Proyecto-robot/` → Documentación y código específico del robot.  
+- `Documentacion-pag4/` → Documenta el proposito y uso de la pagina.
 
 ## 🛠️ Tecnologías Utilizadas
 - **Hardware:** Arduino, componentes electrónicos.  
