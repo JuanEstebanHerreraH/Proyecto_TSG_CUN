@@ -87,7 +87,11 @@ body {
     height: auto;
     border-radius: 10px;
 }
-
+.ImagenPag2_2_1 img {
+    width:480px;
+    height: auto;
+    border-radius: 10px;
+}
 footer {
     padding: 15px;
     text-align: center;
