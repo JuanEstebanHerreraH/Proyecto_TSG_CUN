@@ -4,7 +4,7 @@ Bienvenido al repositorio del **Proyecto TSG-CUN**, donde desarrollamos un **Rob
 
 ## 🚀 Objetivos del Proyecto
 - 🦾 **Robot Autónomo**: Implementación de un circuito basado en **Arduino** capaz de leer y procesar texto.  
-- 🌐 **Página Web**: Desarrollo en **HTML | CSS | JavaScript** para documentar, explicar y presentar el proyecto.  
+- 🌐 **Página Web**: Desarrollo en **HTML | CSS ** para documentar, explicar y presentar el proyecto.  
 
 ## 📂 Estructura del Repositorio
 - `Funciones-robot/` → Funcionalidades y lógica implementada en el robot.  
@@ -14,7 +14,7 @@ Bienvenido al repositorio del **Proyecto TSG-CUN**, donde desarrollamos un **Rob
 
 ## 🛠️ Tecnologías Utilizadas
 - **Hardware:** Arduino, componentes electrónicos.  
-- **Software:** HTML, CSS, JavaScript.  
+- **Software:** HTML, CSS.  
 
 ## 👨‍💻 Equipo de Desarrollo
 - Harold Alexis Diaz Cardoso  
