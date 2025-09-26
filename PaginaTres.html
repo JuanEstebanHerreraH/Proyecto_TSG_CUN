@@ -10,48 +10,218 @@
 </head>
 <body>
     <header>
-<nav >
-    <a class="Links_Paginas"href="PaginaCuatro.html">Documentacion Pagina</a>
-    <a class="Links_Paginas"href="PaginaInicial.html">Presentacion Proyecto</a>
-    <a class="Links_Paginas"href="PaginaDos.html">Proyecto Robot</a>
-    <a href="https://cun.edu.co/" >
-    <img class="ImagenHeader"src="./Assets/Images/CUN.png" alt="imagen click cun">
+<nav>
+  <a class="Links_Paginas" href="PaginaCuatro.html">Documentacion Pagina</a>
+  <a class="Links_Paginas" href="PaginaDos.html">Proyecto Robot</a>
+  <a class="Links_Paginas"href="PaginaInicial.html">Presentacion Proyecto</a>
+
+  <div class="Contenedor_Iconos">
+    <a href="https://cun.edu.co/">
+      <img class="IconoHeader" src="./Assets/Images/CUN.png" alt="imagen click cun" >
     </a>
+    <a href="#" >
+      <img class="IconoHeader" src="./Assets/Images/discord-brands-solid-full.svg" alt="discord" onclick="alert('Link:https: //discord.gg/SXBDbXwE')">
+    </a>
+    <a href="#">
+      <img class="IconoHeader" src="./Assets/Images/gmail.svg" alt="gmail"onclick="alert('juan.herrerahhe@cun.edu.co | harold.diazcca@cun.edu.co')">
+    </a>
+    <a href="#">
+      <img class="IconoHeader" src="./Assets/Images/github-brands-solid-full.svg" alt="gh"onclick="alert('https: //github.com/JuanEstebanHerreraH/Proyecto_TSG_CUN')">
+    </a>
+  </div>
 </nav>
     </header>
     <main class="main">
-        <h1 class="titulo">Funciones Robot</h1>
+<h1 class="titulo">
+  Funciones Robot 
+  <strong style="color:aquamarine; cursor:pointer;" 
+          onclick="document.getElementById('modalCodigo').style.display='flex'">
+    Ver code (Click)
+  </strong>
+</h1>
+<div id="modalCodigo" style="
+  display:none; 
+  position:fixed; 
+  top:0; left:0; 
+  width:100%; height:100%; 
+  background:rgba(0,0,0,0.7); 
+  justify-content:center; 
+  align-items:center;
+">
+  <div style="background:#1e1e1e; color:#d4d4d4; padding:20px; border-radius:10px; max-width:90%; max-height:80%; overflow:auto;">
+    <pre><code>
+#include <LiquidCrystal.h>
+
+// Configuración de pines LCD: RS, E, D4, D5, D6, D7
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+// Pines de componentes
+const int buzzer = 9;
+const int btnPins[] = {6, 7, 10};  // Botones conectados en estos pines
+const int numButtons = sizeof(btnPins) / sizeof(btnPins[0]);
+
+// Mensajes a mostrar según botón
+String messages[] = {
+  "Imagen 1: Perro",
+  "Imagen 2: Casa",
+  "Imagen 3: Hola Mundo"
+};
+
+// Variables para manejo de botones con debounce
+int buttonState[3];
+int lastButtonReading[3];
+unsigned long lastDebounceTime[3];
+const unsigned long debounceDelay = 50; // 50 ms para evitar rebotes
+
+// ---------------------------------------------------
+void setup() {
+  // Inicializar LCD
+  lcd.begin(16, 2);
+  lcd.print("Robot Lector"); // Mensaje inicial en LCD
+
+  // Inicializar comunicación serial
+  Serial.begin(9600);
+
+  // Configurar buzzer y botones
+  pinMode(buzzer, OUTPUT);
+  for (int i = 0; i < numButtons; i++) {
+    pinMode(btnPins[i], INPUT_PULLUP); // Resistencia pull-up interna
+    buttonState[i] = HIGH;
+    lastButtonReading[i] = HIGH;
+    lastDebounceTime[i] = 0;
+  }
+}
+
+// ---------------------------------------------------
+void loop() {
+  // Revisa cada botón
+  for (int i = 0; i < numButtons; i++) {
+    int reading = digitalRead(btnPins[i]);
+
+    // Si cambia el estado, reinicia temporizador de debounce
+    if (reading != lastButtonReading[i]) {
+      lastDebounceTime[i] = millis();
+    }
+
+    // Comprueba después del retardo de debounce
+    if ((millis() - lastDebounceTime[i]) > debounceDelay) {
+      if (reading != buttonState[i]) {
+        buttonState[i] = reading;
+
+        // Acción solo cuando el botón se presiona (LOW)
+        if (buttonState[i] == LOW) {
+          Serial.println(messages[i]);      // Envía mensaje a Serial
+          displayMessage(messages[i]);      // Muestra en la LCD
+          playBeepPattern();                // Emite pitido en buzzer
+        }
+      }
+    }
+    lastButtonReading[i] = reading;
+  }
+}
+
+// ---------------------------------------------------
+// Función: mostrar texto en la LCD
+void displayMessage(String msg) {
+  lcd.clear();
+
+  if (msg.length() <= 16) {
+    lcd.setCursor(0, 0);
+    lcd.print(msg);
+  } else {
+    int len = msg.length();
+    for (int pos = 0; pos <= len - 16; pos++) {
+      lcd.setCursor(0, 0);
+      lcd.print(msg.substring(pos, pos + 16));
+      delay(300); // Desplazamiento suave
+    }
+  }
+}
+
+// ---------------------------------------------------
+// Función: pitido en buzzer
+void playBeepPattern() {
+  for (int i = 0; i < 3; i++) {
+    tone(buzzer, 1000, 150); // Sonido de 1 kHz por 150 ms
+    delay(200);
+  }
+  noTone(buzzer);
+}
+    </code></pre>
+    <button onclick="document.getElementById('modalCodigo').style.display='none'" 
+            style="margin-top:10px; padding:8px 15px; background:aquamarine; border:none; border-radius:5px; cursor:pointer;">
+      Cerrar
+    </button>
+  </div>
+</div>
         <section class="seccionUno_pag3 ">
             <p class="textoUno">
-               Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. 
-                Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
-                cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una 
-                galería de textos y los mezcló de tal manera que logró hacer un libro de textos 
-                especimen. No sólo sobrevivió 500 años, sino que también ingresó como texto de relleno 
-                en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado 
-                en los 60s con la creación de las hojas "Letraset", las cuales contenían pasajes de 
-                Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus 
-                PageMaker, el cual incluye versiones de Lorem Ipsum.            </p>
+               Componentes que aparecen
+
+Arduino UNO
+Es la placa principal, se encarga de recibir señales, procesarlas y controlar los demás componentes.
+Tiene pines digitales y analógicos conectados a los demás dispositivos.
+
+Pantalla LCD 16x2 con potenciómetro
+Pantalla que muestra texto (en la imagen dice “Robot Lector”).
+
+El potenciómetro sirve para regular el contraste de la pantalla.
+
+Buzzer (zumbador)
+Dispositivo que emite sonidos o pitidos.
+Puede usarse para avisos, alarmas o confirmaciones de acción.
+
+Botones pulsadores (3)
+Se usan como entradas para que el usuario interactúe.
+Cada uno puede activar una función diferente (ejemplo: leer, siguiente palabra, reproducir).
+
+Protoboard (Breadboard)
+Se usa para organizar las conexiones y alimentar los componentes.
+
+Cables puente
+Conectan todos los componentes a los pines del Arduino.
+
+
+Conexiones principales
+
+Pantalla LCD:
+Conectada a varios pines digitales (generalmente D2 a D7) para RS, EN, D4, D5, D6, D7 y a 5V y GND para alimentación.
+
+Potenciómetro:
+Dos extremos a 5V y GND; el pin central al pin VO del LCD para controlar contraste.
+
+Buzzer:
+Un cable al pin digital (por ejemplo D8) y otro a GND.
+
+Botones:
+Un lado a GND y el otro a pines digitales con resistencias pull-up internas o externas.            </p>
             <div class="ImagenPag2">
-  <video width="640" height="360" controls>
-    <source src="Assets/Videos/proyecto_tkcrd.mp4" type="video/mp4">
-</video>
+            <div class="ImagenPag2_2_1">
+                <img src="Assets/Images/code.jpg" alt="Imagen tinkercard">
             </div>
         </section>
 
         <section class="seccionDos_pag3">
             <p class="textoDos">
-                Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. 
-                Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
-                cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una 
-                galería de textos y los mezcló de tal manera que logró hacer un libro de textos 
-                especimen. No sólo sobrevivió 500 años, sino que también ingresó como texto de relleno 
-                en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado 
-                en los 60s con la creación de las hojas "Letraset", las cuales contenían pasajes de 
-                Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus 
-                PageMaker, el cual incluye versiones de Lorem Ipsum.            </p>
-            <div class="ImagenPag2_2_1">
-                <img src="Assets/Images/tkcrd.jpg" alt="Imagen tinkercard">
+                Función del “Robot Lector”
+
+Por el nombre y los componentes conectados, este montaje simula un dispositivo lector interactivo, por ejemplo:
+
+Pantalla LCD muestra mensajes o instrucciones.
+
+Botones permiten al usuario desplazarse o seleccionar opciones.
+
+Buzzer emite sonidos para confirmar que se ha presionado un botón o alertar.
+
+Arduino UNO procesa los botones y actualiza el LCD según la lógica del programa.
+
+
+En pocas palabras El Robot Lector podría ser un sistema que lee y muestra texto en la pantalla, y usa los botones para navegar o reproducir sonidos asociados.
+Ejemplo: leer frases, mostrar información paso a paso, o un sistema educativo simple.
+      </p>
+                  <video width="640" height="360" controls>
+    <source src="Assets/Videos/proyecto_tkcrd.mp4" type="video/mp4">
+                  </video>
             </div>
         </section>
     </main>

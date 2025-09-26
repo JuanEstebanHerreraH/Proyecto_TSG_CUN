@@ -88,12 +88,25 @@ nav{
 .Links_Paginas:hover{
    color: aqua;
 }
-.ImagenHeader{
+.Contenedor_Iconos {
+    display: flex;
+    gap: 25px;
+    align-items: center;
     position: absolute;
-    top: 0;
-    right: 0;
-    height: 80%; 
+    top: 5px;
+    right: 15px;
+    margin-top: 5px;
+}
+
+.IconoHeader {
+    height: 45px;
     width: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.IconoHeader:hover {
+    transform: scale(1.2);
 }
 .strong_footer:hover{
 color:aquamarine;
