@@ -31,26 +31,127 @@
 </nav>
 </header>
 <body>
-    <main class="main">
-        <h1 class="titulo">Proyecto Robot</h1>
-        <section class="seccionUno">
-            <p class="textoUno">
-               El Proyecto Robot TSG es una iniciativa académica que combina electrónica, programación y diseño con el objetivo de mostrar el potencial de la robótica aplicada a la vida cotidiana. Está construido sobre la plataforma Arduino, lo que permite integrar distintos sensores y módulos de manera flexible y modular. El robot está pensado para desplazarse sobre superficies que contengan texto y, mediante un sistema de lectura, reconocer la información que encuentra a su paso. El propósito principal de este desarrollo es evidenciar cómo la tecnología puede adaptarse para cumplir funciones de accesibilidad, apoyar procesos educativos y servir como base para futuros proyectos de automatización y asistencia tecnológica.            </p>
-            <div class="ImagenPag2">
-                <img src="Assets/Images/sistema.jpeg" alt="Imagen sistema">
-                <img src="Assets/Images/robot.jpg" alt="Imagen robot">
-            </div>
-        </section>
+   <main class="main">
+  <h1 class="titulo">
+    Proyecto Robot
+    <button onclick="document.getElementById('modalInforme').style.display='flex'" 
+            style="margin-left:15px; padding:8px 15px; background:aquamarine; border:none; border-radius:5px; cursor:pointer; font-size:14px;">
+      Ver informe
+    </button>
+  </h1>
 
-        <section class="seccionDos">
-            <p class="textoDos">
-               Funcionamiento del robot se basa en la captura de texto mediante sensores ópticos, que luego es procesado por el sistema para ser interpretado como caracteres legibles. Posteriormente, esta información se convierte en audio gracias a un módulo de síntesis de voz y un sistema de salida de sonido, lo que permite que el contenido detectado sea leído en tiempo real. Con esta dinámica, el robot no solo cumple la tarea de identificar texto al desplazarse, sino que también lo transforma en un recurso accesible para quienes no pueden leerlo directamente. Su utilidad es amplia: puede servir como herramienta de apoyo para personas con discapacidad visual, como complemento en procesos de enseñanza, o como demostración práctica en proyectos de investigación y desarrollo dentro de la robótica educativa.          </p>
-            <div class="ImagenPag2_2">
-                <img src="Assets/Images/educativo.png" alt="Imagen educativo">
-                <img src="Assets/Images/educacion.png" alt="Imagen educacion">
-            </div>
-        </section>
-    </main>
+  <div id="modalInforme" style="
+    display:none; 
+    position:fixed; 
+    top:0; left:0; 
+    width:100%; height:100%; 
+    background:rgba(0,0,0,0.7); 
+    justify-content:center; 
+    align-items:center;
+  ">
+    <div style="background:#1e1e1e; color:#d4d4d4; padding:20px; border-radius:10px; max-width:90%; max-height:80%; overflow:auto;">
+      <pre><code>
+INFORME PROBLEMAS DEL ROBOT LECTOR
+
+Problemas críticos (arreglar antes de alimentar):
+1. Falta de masa común, el GND o conexiones GND débiles
+  • Problema: Si el Arduino, LCD, sensores y buzzer o noise no comparten
+    GND, las señales no tendrán referencia y el sistema fallará o dará
+    lecturas erráticas.
+  • Solución: Conectar explícitamente la tierra de todos los componentes a
+    la GND del Arduino. Usa la barra de GND de la protoboard y un par de
+    cables más gruesos.
+
+2. Entradas de botones/lectores flotantes
+  • Problema: Los pines digitales conectados a botones pueden “flotar” y leer
+    0/1 aleatorio.
+  • Solución: Usar INPUT_PULLUP en software y cablear el botón al GND o
+    poner resistencias de 10k como pull-down o pull-up físicas.
+
+3. Falta de resistencias para LEDS, protección del buzzer y cargas inductivas
+  • Problema: Si hay LED o buzzer conectados directamente sin resistor,
+    pueden quemar el pin o el componente.
+  • Solución: Añadir resistores (220–1kΩ) a LEDs, para un buzzer piezo
+    puede funcionar directo pero para un buzzer activo o un motor usar
+    transistor/MOSFET y diodo flyback.
+
+-------------------------------------------------------
+Problemas de diseño del LCD:
+1. Cableado del LCD posiblemente incorrecto (RW, V0, contraste)
+  • Problema: Si RW no está a GND o si el potenciómetro no está colocado
+    entre V0 y GND/5V correctamente, el texto no aparece o se ve mal.
+  • Solución: RW → GND, RS/E → pines digitales definidos y D4–D7
+    conectados a 4 pines digitales, V0 al terminal central del potenciómetro
+    a 10k, otro extremo del pot a GND y el otro a 5V, confirmar
+    retroiluminación con resistencia si la requiere.
+
+2. Uso de 8 líneas digitales en vez de modo 4-bit o I2C
+  • Problema: Estás usando muchas líneas digitales al LCD, eso limita pines
+    para sensores y hace el cableado más enmarañado.
+  • Solución: Usar LCD en modo 4-bit (solo D4–D7) o usar un adaptador
+    I2C/SPI para LCD, reduciendo a 2 pines (SDA y SCL).
+
+-------------------------------------------------------
+Problemas físicos y de montaje:
+1. Cables largos y desordenados / ruido y desconexiones
+  • Problema: Las tiras largas y cruzadas aumentan ruido eléctrico y
+    probabilidad de desconexión al mover el robot.
+  • Solución: Agrupar cables, usar canalitos, jumper cortos, conexiones
+    soldadas o con conectores si el robot será móvil.
+
+2. Protoboard para proyecto móvil: inestable
+  • Problema: La protoboard es buena para pruebas, pero si el robot se
+    mueve las conexiones pueden soltarse.
+  • Solución: Para el robot móvil, soldar componentes en placa perforada o
+    usar módulos montados con tornillos o soportes. Asegurar Arduino y LCD
+    con tornillos o cinta doble cara de buena calidad.
+
+3. Alimentación insuficiente o inadecuada (USB, adaptador y baterías)
+  • Problema: Si alimentas por USB y añades sensores o motores, el Arduino
+    no dará suficiente corriente. Las baterías mal dimensionadas provocan
+    reinicios.
+  • Solución: Calcular consumo total (motores, LCD, sensores, buzzer),
+    usar fuente externa regulada (5V) o baterías con regulador y conmutación
+    adecuada. Nunca alimentar motores desde pines del Arduino.
+
+-------------------------------------------------------
+Problemas de software y señalización:
+1. Rebotes en botones (debounce)
+  • Solución: Implementar debounce por software con delay, o mejor con
+    millis(), o hardware RC.
+
+2. Lecturas de sensor ruidosas por cableado largo
+  • Solución: Filtrado por capacitancia, promedios, cables apantallados o
+    rutas cortas.
+      </code></pre>
+
+      <button onclick="document.getElementById('modalInforme').style.display='none'" 
+              style="margin-top:10px; padding:8px 15px; background:aquamarine; border:none; border-radius:5px; cursor:pointer;">
+        Cerrar
+      </button>
+    </div>
+  </div>
+
+  <section class="seccionUno">
+    <p class="textoUno">
+      El Proyecto Robot TSG es una iniciativa académica que combina electrónica, programación y diseño con el objetivo de mostrar el potencial de la robótica aplicada a la vida cotidiana. Está construido sobre la plataforma Arduino, lo que permite integrar distintos sensores y módulos de manera flexible y modular. El robot está pensado para desplazarse sobre superficies que contengan texto y, mediante un sistema de lectura, reconocer la información que encuentra a su paso. El propósito principal de este desarrollo es evidenciar cómo la tecnología puede adaptarse para cumplir funciones de accesibilidad, apoyar procesos educativos y servir como base para futuros proyectos de automatización y asistencia tecnológica.
+    </p>
+    <div class="ImagenPag2">
+      <img src="Assets/Images/sistema.jpeg" alt="Imagen sistema">
+      <img src="Assets/Images/robot.jpg" alt="Imagen robot">
+    </div>
+  </section>
+
+  <section class="seccionDos">
+    <p class="textoDos">
+      El funcionamiento del robot se basa en la captura de texto mediante sensores ópticos, que luego es procesado por el sistema para ser interpretado como caracteres legibles. Posteriormente, esta información se convierte en audio gracias a un módulo de síntesis de voz y un sistema de salida de sonido, lo que permite que el contenido detectado sea leído en tiempo real. Con esta dinámica, el robot no solo cumple la tarea de identificar texto al desplazarse, sino que también lo transforma en un recurso accesible para quienes no pueden leerlo directamente. Su utilidad es amplia: puede servir como herramienta de apoyo para personas con discapacidad visual, como complemento en procesos de enseñanza, o como demostración práctica en proyectos de investigación y desarrollo dentro de la robótica educativa.
+    </p>
+    <div class="ImagenPag2_2">
+      <img src="Assets/Images/educativo.png" alt="Imagen educativo">
+      <img src="Assets/Images/educacion.png" alt="Imagen educación">
+    </div>
+  </section>
+</main>
 
 </body>
 
