@@ -1,24 +1,25 @@
-# 🤖 Proyecto TSG - CUN  
+# Proyecto TSG · CUN
 
-Bienvenido al repositorio del **Proyecto TSG-CUN**, donde desarrollamos un **Robot Autónomo con capacidad de lectura de texto** y una **Página Web interactiva** para su presentación.  
+**Sitio de presentación de un proyecto académico sobre un robot lector de texto.**
 
-## 🚀 Objetivos del Proyecto
-- 🦾 **Robot Autónomo**: Implementación de un circuito basado en **Arduino** capaz de leer y procesar texto.  
-- 🌐 **Página Web**: Desarrollo en **HTML | CSS ** para documentar, explicar y presentar el proyecto.  
+Trabajo de Teoría General de Sistemas de la Corporación Unificada Nacional de Educación Superior (CUN), desarrollado por **Harold Alexis Diaz Cardoso** y **Juan Esteban Herrera Herrera**.
 
-## 📂 Estructura del Repositorio
-- `Funciones-robot/` → Funcionalidades y lógica implementada en el robot.  
-- `Proyecto-tsg/` → Archivos generales del Proyecto TSG.  
-- `Proyecto-robot/` → Documentación y código específico del robot.  
-- `Documentacion-pagina/` → Documenta el proposito y uso de la pagina.
+## Qué contiene este repositorio
 
-## 🛠️ Tecnologías Utilizadas
-- **Hardware:** Arduino, componentes electrónicos.  
-- **Software:** HTML, CSS.  
+La web presenta la propuesta, sus fundamentos y material de apoyo. Incluye páginas HTML, hojas de estilo, imágenes, un video y un documento de referencia.
 
-## 👨‍💻 Equipo de Desarrollo
-- Harold Alexis Diaz Cardoso  
-- Juan Esteban Herrera Herrera  
+| Ruta | Contenido |
+| --- | --- |
+| `index.html` | Página de entrada. |
+| `PaginaDos.html`, `PaginaTres.html` y `PaginaCuatro.html` | Secciones de presentación. |
+| `Assets/` | Estilos, imágenes, video y material de apoyo. |
 
----
-📚`Proyecto académico desarrollado para Teoria General de Sistemas` **Corporación Unificada Nacional de Educación Superior (CUN)**.  
+## Ver la presentación
+
+Clona o descarga el repositorio y abre `index.html` conservando la carpeta Assets y los nombres de archivo. No requiere instalar dependencias de aplicación.
+
+## Tecnologías y alcance
+
+**HTML y CSS** para la presentación web. La propuesta académica trata sobre un robot basado en Arduino; este repositorio no contiene un proyecto Arduino listo para compilar ni las carpetas de firmware mencionadas en versiones anteriores de la documentación.
+
+La documentación distingue la presentación del proyecto de una implementación de hardware reproducible. Los recursos de referencia conservan sus autores originales.
